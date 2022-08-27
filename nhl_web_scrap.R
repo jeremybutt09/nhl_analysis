@@ -7,9 +7,18 @@ library(lubridate)
 output_player_file_name <- "player_game_stats.csv"
 output_goalie_file_name <- "goalie_game_stats.csv"
 
+#RETURNS THE LAST DATE IN THE CURRENT PLAYERS DATA
+max_data <- read_csv(output_player_file_name) %>%
+    pull(DATE) %>%
+    max(.)
+
+#RETURNST HE CURRENT DATE
+today <- today()
+
 #THE START AND END DATE OF STATS YOU WANT TO DOWNLOAD
-start_date <- as.Date('2017-10-04')
-end_date <- as.Date('2021-10-14')
+start_date <- as.Date(max_data) + 1
+end_date <- as.Date(today)
+
 #CREATING A DATE SEQUENCE TO LOOP OVER
 date_seq <- seq(from = start_date,
                 to = end_date,
@@ -125,11 +134,11 @@ goalie_daily_stats <- map(daily_stats, 2) %>%
 write_csv(x = player_daily_stats,
           file = output_player_file_name,
           na = "",
-          append = FALSE)
+          append = TRUE)
 
 #WRITING PLAYER DATA TO A CSV
 write_csv(x = goalie_daily_stats,
           file = output_goalie_file_name,
           na = "",
-          append = FALSE)
+          append = TRUE)
 
