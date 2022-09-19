@@ -1,0 +1,9 @@
+
+SQL*Loader: Release 21.0.0.0.0 - Production on Sun Sep 18 12:10:55 2022
+Version 21.3.0.0.0
+
+Copyright (c) 1982, 2021, Oracle and/or its affiliates.  All rights reserved.
+
+SQL*Loader-704: Internal error: ulconnect: OCIServerAttach [0]
+ORA-12154: TNS:could not resolve the connect identifier specified
+
