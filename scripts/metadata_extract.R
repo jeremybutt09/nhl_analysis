@@ -3,17 +3,18 @@ library(tidyverse)
 library(lubridate)
 library("nhlapi")
 
-game_metadata <-nhl_md_game_types()
-play_metadata <- nhl_md_play_types()
-standings_metadata <- nhl_md_standings_types()
-stat_metadata <- nhl_md_stat_types()
+#DEFINGIN THE OUTPUT FILES. IT IS IMPORTANT THAT THE LIST ORDER IS THE SAME AS
+#THE FUNCTION ORDER IN THE NEXT STEP
+output_files <- list("/Users/jeremybutt/nhl_analysis/data/metadata_game_types.csv",
+                     "/Users/jeremybutt/nhl_analysis/data/metadata_play_types.csv",
+                     "/Users/jeremybutt/nhl_analysis/data/metadata_standing_types.csv",
+                      "/Users/jeremybutt/nhl_analysis/data/metadata_stat_types.csv")
 
-metadata_functions_list <- list(nhl_md_game_types(),
-                                nhl_md_play_types(),
-                                nhl_md_standings_types(),
-                                nhl_md_stat_types()) %>%
-    unnest()
-    
+#CREATING LIST OF METADATA AND RENAMING ALL COLUMNS TO BE IMPORTED INTO ORACLE
+metadata_functions_list <- append(nhl_md_game_types(),
+                                  nhl_md_play_types()) %>%
+    append(nhl_md_standings_types()) %>%
+    append(nhl_md_stat_types()) %>%
     map(., ~ rename_with(.x,
                          str_replace_all, 
                          pattern = "\\.",
@@ -25,4 +26,11 @@ metadata_functions_list <- list(nhl_md_game_types(),
     map(., ~ rename_with(.x, 
                          str_to_upper))
 
-metadata_functions_list[[1]]
+#WRITING METADATA TO DATA FOLDER
+map2(.x = metadata_functions_list,
+     .y = output_files,
+     ~ write_csv(
+           x = .x,
+           file = .y,
+           na = ""))
+
