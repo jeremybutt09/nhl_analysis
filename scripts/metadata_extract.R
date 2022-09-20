@@ -8,13 +8,17 @@ library("nhlapi")
 output_files <- list("/Users/jeremybutt/nhl_analysis/data/metadata_game_types.csv",
                      "/Users/jeremybutt/nhl_analysis/data/metadata_play_types.csv",
                      "/Users/jeremybutt/nhl_analysis/data/metadata_standing_types.csv",
-                      "/Users/jeremybutt/nhl_analysis/data/metadata_stat_types.csv")
+                     "/Users/jeremybutt/nhl_analysis/data/metadata_stat_types.csv",
+                     "/Users/jeremybutt/nhl_analysis/data/metadata_conference.csv",
+                     "/Users/jeremybutt/nhl_analysis/data/metadata_division.csv")
 
 #CREATING LIST OF METADATA AND RENAMING ALL COLUMNS TO BE IMPORTED INTO ORACLE
 metadata_functions_list <- append(nhl_md_game_types(),
                                   nhl_md_play_types()) %>%
     append(nhl_md_standings_types()) %>%
     append(nhl_md_stat_types()) %>%
+    append(nhl_conferences()) %>%
+    append(nhl_divisions()) %>%
     map(., ~ rename_with(.x,
                          str_replace_all, 
                          pattern = "\\.",
