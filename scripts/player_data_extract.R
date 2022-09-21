@@ -4,12 +4,25 @@ library(lubridate)
 library(magrittr)
 library("nhlapi")
 
-game_id <- 2021010002
+#OUTPUT FILE
+player_output_file <- "data/player_game_data.csv"
+goalie_output_file <- "data/goalie_game_data.csv"
 
-boxscore <- nhl_games_boxscore(game_id)
+#FILE WITH SCHEDULE DATA. 
+schedule_file <- "data/schedule_data.csv"
 
+#LOADING ONLY GAME_PK DATA. THIS WILL BE RUN THROUGH A LOOP
+game_id <- read_csv(file = schedule_file,
+                          col_select = GAME_PK) %>%
+    pull(GAME_PK)
+
+#DEFINING THE HOME VS AWAY LIST
 home_away_list <- list("home",
                        "away")
+
+for (i in 1:2) {
+
+boxscore <- nhl_games_boxscore(game_id[i])
 
 player_game_data_extract <- function(data, home_away) {
     player_data <- data %>%
@@ -42,7 +55,13 @@ player_game_data_extract <- function(data, home_away) {
 
 player_game_data <- map(.x = home_away_list, 
                         .f = player_game_data_extract, 
-                        data = boxscore)
+                        data = boxscore) %>%
+    bind_rows()
+
+write_csv(x = player_game_data,
+          file = player_output_file,
+          na = "",
+          append = TRUE)
 
 goalie_game_data_extract <- function(data, home_away) {
     goalie_data <- data %>%
@@ -75,4 +94,12 @@ goalie_game_data_extract <- function(data, home_away) {
 
 goalie_game_data <- map(.x = home_away_list, 
                         .f = goalie_game_data_extract, 
-                        data = boxscore)
+                        data = boxscore) %>%
+    bind_rows
+
+write_csv(x = goalie_game_data,
+          file = goalie_output_file,
+          na = "",
+          append = TRUE)
+
+}

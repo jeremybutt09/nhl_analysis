@@ -17,7 +17,7 @@ metadata_functions_list <- append(nhl_md_game_types(),
                                   nhl_md_play_types()) %>%
     append(nhl_md_standings_types()) %>%
     append(nhl_md_stat_types()) %>%
-    append(nhl_conferences()) %>%
+    append(list(nhl_conferences())) %>%
     append(nhl_divisions()) %>%
     map(., ~ rename_with(.x,
                          str_replace_all, 
