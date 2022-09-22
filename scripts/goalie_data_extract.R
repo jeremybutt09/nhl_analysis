@@ -5,8 +5,7 @@ library(magrittr)
 library("nhlapi")
 
 #OUTPUT FILE
-player_output_file <- "data/player_game_data"
-goalie_output_file <- "data/goalie_game_data.csv"
+goalie_output_file <- "data/goalie_game_data"
 log_output_file <- "log/goalie_loop.csv"
 
 #FILE WITH SCHEDULE DATA. 
@@ -18,6 +17,7 @@ schedule_file <- "data/schedule_data.csv"
 col <- c(PLAYER_ID = NA_integer_,
          PLAYER_NAME = NA_character_,
          PRIMARY_POSITION_CODE = NA_character_,
+         TEAM_ID = NA_integer_,
          TIME_ON_ICE = NA_character_,
          ASSISTS = NA_integer_,
          GOALS = NA_integer_,
@@ -59,12 +59,14 @@ goalie_game_data_extract <- function(game_id, home_away) {
         hoist(person,
               player_id = list("id"),
               player_name = list("fullName"),
-              primary_position_code = list("primaryPosition", "code")) %>%
+              primary_position_code = list("primaryPosition", "code"),
+              team_id = list("currentTeam", "id")) %>%
         filter(primary_position_code == "G",      #REMOVING GOALIES. THIS FUNCTION IS FOR PLAYER
                !is.na(goalieStats_timeOnIce)) %>% #DON'T WANT TO INCLUDE PLAYER WHO DIDN'T PLAY
         select(player_id,
                player_name,
                primary_position_code,
+               team_id,
                starts_with("goalieStats_")) %>% #COLUMNS WITHIN skaterStats LIST COLUMN VARY FROM API CALL. THIS ENSURE ALL skaterStat COLUMNS ARE RETURNED
         rename_with(.,
                     str_replace_all,
@@ -79,6 +81,7 @@ goalie_game_data_extract <- function(game_id, home_away) {
         select(PLAYER_ID,  #EXPLICITY CHOOSING ORDER OF COLUMNS TO ENSURE WHEN RUNNING THROUGH LOOP THAT 
                PLAYER_NAME,#COLUMNS ARE IN PROPER ORDER
                PRIMARY_POSITION_CODE,
+               TEAM_ID,
                TIME_ON_ICE,
                ASSISTS,
                GOALS,
@@ -100,7 +103,7 @@ goalie_game_data_extract <- function(game_id, home_away) {
 
 
 for (i in 1:length(home_away_list)) {
-    for (j in 1:length(game_id)) {
+    for (j in 1:2) {#length(game_id)) {
         
         test <- nhl_games_boxscore(game_id[j]) %>%
             .[[1]] %>%
@@ -114,7 +117,7 @@ for (i in 1:length(home_away_list)) {
         
         goalie_game_data <- goalie_game_data_extract(game_id = game_id[j],
                                                      home_away = home_away_list[[i]])
-        print(paste(i, " ", j))
+        print(paste(i, " ", j, " ", now()))
         
         log_df <- data.frame(x = i,
                              y = j)
@@ -122,7 +125,7 @@ for (i in 1:length(home_away_list)) {
         write_csv(x = goalie_game_data,
                   file = paste(goalie_output_file, "_", str_sub(game_id[j], 1, 4), ".csv", sep = ""),
                   na = "",
-                  append = TRUE)
+                  append = FALSE)
         
         write_csv(x = log_df,
                   file = log_output_file,
