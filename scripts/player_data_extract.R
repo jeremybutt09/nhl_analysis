@@ -7,6 +7,7 @@ library("nhlapi")
 #OUTPUT FILE
 player_output_file <- "data/player_game_data"
 goalie_output_file <- "data/goalie_game_data.csv"
+log_output_file <- "log/loop.csv"
 
 #FILE WITH SCHEDULE DATA. 
 schedule_file <- "data/schedule_data.csv"
@@ -108,7 +109,6 @@ player_game_data_extract <- function(game_id, home_away) {
 
 #1 2892
 #1 2909
-#1 2916
 for (i in 1:length(home_away_list)) {
     for (j in 1:length(game_id)) {
     
@@ -125,16 +125,22 @@ for (i in 1:length(home_away_list)) {
     player_game_data <- player_game_data_extract(game_id = game_id[j],
                                                  home_away = home_away_list[[i]])
     print(paste(i, " ", j))
+    log_df <- data.frame(x = i,
+                         y = j)
     
     write_csv(x = player_game_data,
               file = paste(player_output_file, "_", str_sub(game_id[j], 1, 4), ".csv", sep = ""),
               na = "",
               append = TRUE)
-
+    
+    write_csv(x = log_df,
+              file = log_output_file,
+              na = "",
+              append = TRUE)
     }
 }
 
-file.remove(player_output_file)
+#file.remove(player_output_file)
 
 goalie_game_data_extract <- function(data, home_away) {
     goalie_data <- data %>%
