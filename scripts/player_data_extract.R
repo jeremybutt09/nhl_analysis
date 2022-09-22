@@ -80,7 +80,7 @@ player_game_data_extract <- function(game_id, home_away) {
                     str_remove,
                     pattern = "SKATER_STATS_") %>% #REMOVING THIS PATTERN TO MAKE COLUMN NAMES MORE SIMPLY.
         add_column(!!!col[!names(col) %in% names(.)]) %>% #ADDING MISSING COLUMNS FROM THE 
-        transmute(GAME_ID = game_id,,
+        transmute(GAME_ID = game_id,
                             PLAYER_ID,  #EXPLICITY CHOOSING ORDER OF COLUMNS TO ENSURE WHEN RUNNING THROUGH LOOP THAT 
                             PLAYER_NAME,#COLUMNS ARE IN PROPER ORDER
                             PRIMARY_POSITION_CODE,
