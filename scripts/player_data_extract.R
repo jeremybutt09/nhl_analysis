@@ -140,5 +140,3 @@ for (i in 1:length(home_away_list)) {
 }
 
 #file.remove(player_output_file)
-
-}
