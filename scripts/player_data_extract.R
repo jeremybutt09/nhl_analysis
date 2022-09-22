@@ -80,35 +80,34 @@ player_game_data_extract <- function(game_id, home_away) {
                     str_remove,
                     pattern = "SKATER_STATS_") %>% #REMOVING THIS PATTERN TO MAKE COLUMN NAMES MORE SIMPLY.
         add_column(!!!col[!names(col) %in% names(.)]) %>% #ADDING MISSING COLUMNS FROM THE 
-        select(PLAYER_ID,  #EXPLICITY CHOOSING ORDER OF COLUMNS TO ENSURE WHEN RUNNING THROUGH LOOP THAT 
-               PLAYER_NAME,#COLUMNS ARE IN PROPER ORDER
-               PRIMARY_POSITION_CODE,
-               TIME_ON_ICE,
-               ASSISTS,
-               GOALS,
-               SHOTS,
-               HITS,
-               POWER_PLAY_GOALS,
-               POWER_PLAY_ASSISTS,
-               PENALTY_MINUTES,
-               FACE_OFF_WINS,
-               FACEOFF_TAKEN,
-               TAKEAWAYS,
-               GIVEAWAYS,
-               SHORT_HANDED_GOALS,
-               SHORT_HANDED_ASSISTS,
-               BLOCKED,
-               PLUS_MINUS,
-               EVEN_TIME_ON_ICE,
-               POWER_PLAY_TIME_ON_ICE,
-               SHORT_HANDED_TIME_ON_ICE,
-               FACE_OFF_PCT)
+        transmute(GAME_ID = game_id,,
+                            PLAYER_ID,  #EXPLICITY CHOOSING ORDER OF COLUMNS TO ENSURE WHEN RUNNING THROUGH LOOP THAT 
+                            PLAYER_NAME,#COLUMNS ARE IN PROPER ORDER
+                            PRIMARY_POSITION_CODE,
+                            TIME_ON_ICE,
+                            ASSISTS,
+                            GOALS,
+                            SHOTS,
+                            HITS,
+                            POWER_PLAY_GOALS,
+                            POWER_PLAY_ASSISTS,
+                            PENALTY_MINUTES,
+                            FACE_OFF_WINS,
+                            FACEOFF_TAKEN,
+                            TAKEAWAYS,
+                            GIVEAWAYS,
+                            SHORT_HANDED_GOALS,
+                            SHORT_HANDED_ASSISTS,
+                            BLOCKED,
+                            PLUS_MINUS,
+                            EVEN_TIME_ON_ICE,
+                            POWER_PLAY_TIME_ON_ICE,
+                            SHORT_HANDED_TIME_ON_ICE,
+                            FACE_OFF_PCT)
     
     return(player_data)
 }
 
-#1 2892
-#1 2909
 for (i in 1:length(home_away_list)) {
     for (j in 1:length(game_id)) {
     
@@ -141,44 +140,5 @@ for (i in 1:length(home_away_list)) {
 }
 
 #file.remove(player_output_file)
-
-goalie_game_data_extract <- function(data, home_away) {
-    goalie_data <- data %>%
-        .[[1]] %>%
-        extract2("teams") %>%
-        extract2(home_away) %>%
-        extract2("players") %>%
-        tibble(player_id = .) %>%
-        unnest_wider(player_id) %>%
-        unnest_wider(stats) %>%
-        unnest_wider(goalieStats) %>%
-        hoist(person,
-              player_id = list("id"),
-              player_name = list("fullName"),
-              primary_position_code = list("primaryPosition", "code")) %>%
-        filter(primary_position_code == "G",
-               !is.na(timeOnIce)) %>%
-        select(player_id,
-               player_name,
-               primary_position_code,
-               timeOnIce:evenStrengthSavePercentage) %>%
-        rename_with(.,
-                    str_replace_all,
-                    pattern = "(?<=[a-z0-9])(?=[A-Z])",
-                    replacement = "_") %>%
-        rename_with(.,
-                    str_to_upper)
-    return(goalie_data)
-}
-
-goalie_game_data <- map(.x = home_away_list, 
-                        .f = goalie_game_data_extract, 
-                        data = boxscore) %>%
-    bind_rows
-
-write_csv(x = goalie_game_data,
-          file = goalie_output_file,
-          na = "",
-          append = TRUE)
 
 }
