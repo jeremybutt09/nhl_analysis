@@ -110,7 +110,7 @@ player_game_data_extract <- function(game_id, home_away) {
 #1 2909
 #1 2916
 for (i in 1:length(home_away_list)) {
-    for (j in 2916:length(game_id)) {
+    for (j in 1:length(game_id)) {
     
     test <- nhl_games_boxscore(game_id[j]) %>%
                 .[[1]] %>%
@@ -127,7 +127,7 @@ for (i in 1:length(home_away_list)) {
     print(paste(i, " ", j))
     
     write_csv(x = player_game_data,
-              file = paste(player_output_file, "_", str_sub(game_id[i], 1, 4), ".csv", sep = ""),
+              file = paste(player_output_file, "_", str_sub(game_id[j], 1, 4), ".csv", sep = ""),
               na = "",
               append = TRUE)
 
