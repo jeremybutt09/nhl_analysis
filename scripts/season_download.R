@@ -6,28 +6,34 @@ library("nhlapi")
 #OUTPUT FILE
 output_file <- "C:/Users/Jeremy/Documents/nhl_analysis/data/schedule_data.csv"
 
-#CREATING VARIABLE FOR CURRENT YEAR
-current_year <- year(today())
 
-#EARLIEST YEAR OF INTEREST FOR SCHEDULE DATA
-first_year = 2015
+#CREATING A DATE SEQUENCE TO LOOP OVER
+year_seq <- seq(from = 2016,
+                to = 2022,
+                by = 1)
+
+#INITIALIZING AN EMPTY LIST
+schedule_list <- vector(mode = "list", length = length(year_seq))
 
 #EXTRACTING DATA TO SHOW ALL NHL GAMES WITH METADATA FOR DEFINED YEAR RANGE
-schedule_data <- nhl_schedule(seasons = first_year:current_year)[[1]][["dates"]] %>%
-    unnest(games) %>%
-    select(-c(events, matches)) %>%
-    rename_with(.,
-                str_replace_all, 
-                pattern = "\\.",
-                replacement = "_") %>%
-    rename_with(.,
-                str_replace_all,
-                pattern = "(?<=[a-z0-9])(?=[A-Z])",
-                replacement = "_") %>%
-    rename_with(.,
-                str_to_upper)
+for (i in 1:length(year_seq)) {
+    schedule_list[[i]] <- nhl_schedule(seasons = year_seq[i])[[1]][["dates"]] %>%
+        unnest(games) %>%
+        select(-c(events, matches)) %>%
+        rename_with(.,
+                    str_replace_all, 
+                    pattern = "\\.",
+                    replacement = "_") %>%
+        rename_with(.,
+                    str_replace_all,
+                    pattern = "(?<=[a-z0-9])(?=[A-Z])",
+                    replacement = "_") %>%
+        rename_with(.,
+                    str_to_upper)
+    }
 
-glimpse(schedule_data)
+#BINDING ALL DATA INTO A SINGLE DATAFRAME
+schedule_data <- bind_rows(schedule_list)
 
 #WRITE DATA TO A CSV
 write_csv(x = schedule_data,
