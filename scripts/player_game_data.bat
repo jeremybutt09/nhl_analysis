@@ -1,0 +1,1 @@
+sqlldr sportdatasci/sds_password@10.0.0.69:1521/XEPDB1 CONTROL=player_game_data.ctl LOG=C:\Users\Jeremy\Documents\nhl_analysis\log\player_game_data.log BAD=C:\Users\Jeremy\Documents\nhl_analysis\bad\player_game_data.bad skip=0
