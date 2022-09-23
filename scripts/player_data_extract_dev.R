@@ -11,7 +11,8 @@ test1 <- nhl_games_boxscore(2019020001) %>%
     hoist(person,
           player_id = list("id"),
           player_name = list("fullName"),
-          primary_position_code = list("primaryPosition", "code")) %>%
+          primary_position_code = list("primaryPosition", "code"),
+          team_id = list("currentTeam", "id")) %>%
     filter(primary_position_code != "G",
            !is.na(skaterStats_timeOnIce)) %>% #CHANGED
     select(player_id,

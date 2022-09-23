@@ -18,6 +18,7 @@ schedule_file <- "data/schedule_data.csv"
 col <- c(PLAYER_ID = NA_integer_,
          PLAYER_NAME = NA_character_,
          PRIMARY_POSITION_CODE = NA_character_,
+         TEAM_ID = NA_integer_,
          TIME_ON_ICE = NA_character_,
          ASSISTS = NA_integer_,
          GOALS = NA_integer_,
@@ -63,12 +64,14 @@ player_game_data_extract <- function(game_id, home_away) {
         hoist(person,
               player_id = list("id"),
               player_name = list("fullName"),
-              primary_position_code = list("primaryPosition", "code")) %>%
+              primary_position_code = list("primaryPosition", "code"),
+              team_id = list("currentTeam", "id")) %>%
         filter(primary_position_code != "G",      #REMOVING GOALIES. THIS FUNCTION IS FOR PLAYER
                !is.na(skaterStats_timeOnIce)) %>% #DON'T WANT TO INCLUDE PLAYER WHO DIDN'T PLAY
         select(player_id,
                player_name,
                primary_position_code,
+               team_id,
                starts_with("skaterStats_")) %>% #COLUMNS WITHIN skaterStats LIST COLUMN VARY FROM API CALL. THIS ENSURE ALL skaterStat COLUMNS ARE RETURNED
         rename_with(.,
                     str_replace_all,
@@ -81,29 +84,30 @@ player_game_data_extract <- function(game_id, home_away) {
                     pattern = "SKATER_STATS_") %>% #REMOVING THIS PATTERN TO MAKE COLUMN NAMES MORE SIMPLY.
         add_column(!!!col[!names(col) %in% names(.)]) %>% #ADDING MISSING COLUMNS FROM THE 
         transmute(GAME_ID = game_id,
-                            PLAYER_ID,  #EXPLICITY CHOOSING ORDER OF COLUMNS TO ENSURE WHEN RUNNING THROUGH LOOP THAT 
-                            PLAYER_NAME,#COLUMNS ARE IN PROPER ORDER
-                            PRIMARY_POSITION_CODE,
-                            TIME_ON_ICE,
-                            ASSISTS,
-                            GOALS,
-                            SHOTS,
-                            HITS,
-                            POWER_PLAY_GOALS,
-                            POWER_PLAY_ASSISTS,
-                            PENALTY_MINUTES,
-                            FACE_OFF_WINS,
-                            FACEOFF_TAKEN,
-                            TAKEAWAYS,
-                            GIVEAWAYS,
-                            SHORT_HANDED_GOALS,
-                            SHORT_HANDED_ASSISTS,
-                            BLOCKED,
-                            PLUS_MINUS,
-                            EVEN_TIME_ON_ICE,
-                            POWER_PLAY_TIME_ON_ICE,
-                            SHORT_HANDED_TIME_ON_ICE,
-                            FACE_OFF_PCT)
+                  PLAYER_ID,  #EXPLICITY CHOOSING ORDER OF COLUMNS TO ENSURE WHEN RUNNING THROUGH LOOP THAT 
+                  PLAYER_NAME,#COLUMNS ARE IN PROPER ORDER
+                  PRIMARY_POSITION_CODE,
+                  TEAM_ID,
+                  TIME_ON_ICE,
+                  ASSISTS,
+                  GOALS,
+                  SHOTS,
+                  HITS,
+                  POWER_PLAY_GOALS,
+                  POWER_PLAY_ASSISTS,
+                  PENALTY_MINUTES,
+                  FACE_OFF_WINS,
+                  FACEOFF_TAKEN,
+                  TAKEAWAYS,
+                  GIVEAWAYS,
+                  SHORT_HANDED_GOALS,
+                  SHORT_HANDED_ASSISTS,
+                  BLOCKED,
+                  PLUS_MINUS,
+                  EVEN_TIME_ON_ICE,
+                  POWER_PLAY_TIME_ON_ICE,
+                  SHORT_HANDED_TIME_ON_ICE,
+                  FACE_OFF_PCT)
     
     return(player_data)
 }
@@ -123,7 +127,8 @@ for (i in 1:length(home_away_list)) {
 
     player_game_data <- player_game_data_extract(game_id = game_id[j],
                                                  home_away = home_away_list[[i]])
-    print(paste(i, " ", j))
+    print(paste(i, " ", j, " ", now()))
+    
     log_df <- data.frame(x = i,
                          y = j)
     
