@@ -78,32 +78,33 @@ goalie_game_data_extract <- function(game_id, home_away) {
                     str_remove,
                     pattern = "GOALIE_STATS_") %>% #REMOVING THIS PATTERN TO MAKE COLUMN NAMES MORE SIMPLY.
         add_column(!!!col[!names(col) %in% names(.)]) %>% #ADDING MISSING COLUMNS FROM THE 
-        select(PLAYER_ID,  #EXPLICITY CHOOSING ORDER OF COLUMNS TO ENSURE WHEN RUNNING THROUGH LOOP THAT 
-               PLAYER_NAME,#COLUMNS ARE IN PROPER ORDER
-               PRIMARY_POSITION_CODE,
-               TEAM_ID,
-               TIME_ON_ICE,
-               ASSISTS,
-               GOALS,
-               PIM,
-               SHOTS,
-               SAVES,
-               POWER_PLAY_SAVES,
-               SHORT_HANDED_SAVES,
-               EVEN_SAVES,
-               SHORT_HANDED_SHOTS_AGAINST,
-               EVEN_SHOTS_AGAINST,
-               POWER_PLAY_SHOTS_AGAINST,
-               DECISION,
-               SAVE_PERCENTAGE,
-               EVEN_STRENGTH_SAVE_PERCENTAGE)
+        transmute(GAME_ID = game_id,
+                  PLAYER_ID,  #EXPLICITY CHOOSING ORDER OF COLUMNS TO ENSURE WHEN RUNNING THROUGH LOOP THAT 
+                  PLAYER_NAME,#COLUMNS ARE IN PROPER ORDER
+                  PRIMARY_POSITION_CODE,
+                  TEAM_ID,
+                  TIME_ON_ICE,
+                  ASSISTS,
+                  GOALS,
+                  PIM,
+                  SHOTS,
+                  SAVES,
+                  POWER_PLAY_SAVES,
+                  SHORT_HANDED_SAVES,
+                  EVEN_SAVES,
+                  SHORT_HANDED_SHOTS_AGAINST,
+                  EVEN_SHOTS_AGAINST,
+                  POWER_PLAY_SHOTS_AGAINST,
+                  DECISION,
+                  SAVE_PERCENTAGE,
+                  EVEN_STRENGTH_SAVE_PERCENTAGE)
     
     return(goalie_data)
 }
 
 
 for (i in 1:length(home_away_list)) {
-    for (j in 1:2) {#length(game_id)) {
+    for (j in 1:length(game_id)) {
         
         test <- nhl_games_boxscore(game_id[j]) %>%
             .[[1]] %>%
@@ -125,7 +126,7 @@ for (i in 1:length(home_away_list)) {
         write_csv(x = goalie_game_data,
                   file = paste(goalie_output_file, "_", str_sub(game_id[j], 1, 4), ".csv", sep = ""),
                   na = "",
-                  append = FALSE)
+                  append = TRUE)
         
         write_csv(x = log_df,
                   file = log_output_file,
