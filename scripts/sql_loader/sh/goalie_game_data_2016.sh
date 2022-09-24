@@ -1,0 +1,1 @@
+sqlldr CONTROL=goalie_game_data_2016.ctl LOG=C:\Users\Jeremy\Documents\nhl_analysis\log\goalie_game_data_2016.log BAD=C:\Users\Jeremy\Documents\nhl_analysis\bad\goalie_game_data_2016.bad skip=0   
