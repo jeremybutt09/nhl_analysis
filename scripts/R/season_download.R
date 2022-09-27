@@ -20,6 +20,7 @@ for (i in 1:length(year_seq)) {
     schedule_list[[i]] <- nhl_schedule(seasons = year_seq[i])[[1]][["dates"]] %>%
         unnest(games) %>%
         select(-c(events, matches)) %>%
+        mutate_if(is.character, stringi::stri_trans_general, "Latin-ASCII") %>%
         rename_with(.,
                     str_replace_all, 
                     pattern = "\\.",
