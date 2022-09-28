@@ -329,7 +329,8 @@ WHERE
     OR penalty_minutes > 30
 ORDER BY
     player_name;
-    
+
+
 SELECT
     game_date,
     game_type,
@@ -345,6 +346,7 @@ ORDER BY
     game_date DESC
 ;
 
+--NEED TO REVIEW
 SELECT
     game_date,
     game_type,
@@ -356,6 +358,21 @@ FROM
 WHERE
     NOT (teams_home_league_record_wins > 50
          AND teams_away_league_record_wins > 50)
+ORDER BY
+    game_date DESC
+;
+--NEED TO REVIEW
+SELECT
+    game_date,
+    game_type,
+    season,
+    teams_away_team_name || ' (' || teams_away_league_record_wins || '-' || teams_away_league_record_losses || '-' || teams_away_league_record_ot || '): ' || teams_away_score AS away_team,
+    teams_home_team_name || ' (' || teams_home_league_record_wins || '-' || teams_home_league_record_losses || '-' || teams_home_league_record_ot || '): ' || teams_home_score AS home_team
+FROM
+    fact_schedule
+WHERE
+    NOT (teams_home_league_record_wins <= 50
+         AND NOT teams_away_league_record_wins <= 50)
 ORDER BY
     game_date DESC
 ;
@@ -377,3 +394,83 @@ WHERE
 ORDER BY
     game_date DESC
 ;
+
+--WITH PARENTTHESES
+SELECT
+    game_date,
+    game_type,
+    season,
+    teams_away_team_name || ' (' || teams_away_league_record_wins || '-' || teams_away_league_record_losses || '-' || teams_away_league_record_ot || '): ' || teams_away_score AS away_team,
+    teams_home_team_name || ' (' || teams_home_league_record_wins || '-' || teams_home_league_record_losses || '-' || teams_home_league_record_ot || '): ' || teams_home_score AS home_team
+FROM
+    fact_schedule
+WHERE
+    (teams_home_league_record_wins > 50
+    AND teams_home_score <= 3)
+    AND
+    (teams_away_league_record_wins < 25
+    AND teams_away_score >= 3)
+ORDER BY
+    game_date DESC
+;
+
+--WITHOUT PARENTHESES
+SELECT
+    game_date,
+    game_type,
+    season,
+    teams_away_team_name || ' (' || teams_away_league_record_wins || '-' || teams_away_league_record_losses || '-' || teams_away_league_record_ot || '): ' || teams_away_score AS away_team,
+    teams_home_team_name || ' (' || teams_home_league_record_wins || '-' || teams_home_league_record_losses || '-' || teams_home_league_record_ot || '): ' || teams_home_score AS home_team
+FROM
+    fact_schedule
+WHERE
+    teams_home_league_record_wins > 50
+    AND teams_home_score <= 3
+    AND
+    teams_away_league_record_wins < 25
+    AND teams_away_score >= 3
+ORDER BY
+    game_date DESC
+;
+
+--IN EXAMPLES
+--WHERE test_expression [NOT] IN ({subquery|expression_1 [, expression_2]...})
+SELECT
+    game_id,
+    player_id,
+    player_name,
+    primary_position_code,
+    team_id,
+    time_on_ice,
+    assists,
+    goals,
+    penalty_minutes,
+    shots,
+    saves,
+    power_play_saves,
+    short_handed_saves,
+    even_saves,
+    short_handed_shots_against,
+    even_shots_against,
+    power_play_shots_against,
+    decision,
+    save_percentage,
+    even_strength_save_percentage
+FROM
+    fact_goalie
+WHERE
+--    player_name IN ('Marc-Andre Fleury',
+--                    'Carey Price')
+    player_name NOT IN ('Marc-Andre Fleury',
+                        'Carey Price');
+                        
+--IN WITH A SUBQUERY
+SELECT
+    *
+FROM
+    fact_player
+WHERE
+    player_id IN (SELECT player_id FROM dim_players WHERE birth_date >= '2003-01-01')
+;
+
+select DISTINCT player_name, CONVERT(player_name, 'US7ASCII') from fact_player WHERE player_name LIKE '%Tim S%';
