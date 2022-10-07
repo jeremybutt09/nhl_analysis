@@ -109,7 +109,8 @@ player_game_data_extract <- function(game_id, home_away) {
                   EVEN_TIME_ON_ICE,
                   POWER_PLAY_TIME_ON_ICE,
                   SHORT_HANDED_TIME_ON_ICE,
-                  FACE_OFF_PCT)
+                  FACE_OFF_PCT) %>%
+        mutate_if(is.character, stringi::stri_trans_general, "Latin-ASCII")
     
     return(player_data)
 }
