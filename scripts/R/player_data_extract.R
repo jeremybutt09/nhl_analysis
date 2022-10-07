@@ -5,12 +5,14 @@ library(magrittr)
 library("nhlapi")
 
 #OUTPUT FILE
-player_output_file <- "data/player_game_data"
-goalie_output_file <- "data/goalie_game_data.csv"
+#player_output_file <- "data/player_game_data"
+player_output_file <- "data/player_playoff_game_data.csv"
+#goalie_output_file <- "data/goalie_game_data.csv"
 log_output_file <- "log/loop.csv"
 
 #FILE WITH SCHEDULE DATA. 
-schedule_file <- "data/schedule_data.csv"
+#schedule_file <- "data/schedule_data.csv"
+schedule_file <- "data/playoff_data.csv"
 
 #CREATING A VECTOR OF COLUMN NAMES WITH THE CORRESPONDING NA VALUES. THIS WILL BE USED IN THE CASE
 #A COLUMN DOESN'T EXIST IN API CALL. NOT SURE THE REASON BUT IT SEEMS SOMETIMES THAT faceOffPct COLUMN
@@ -42,7 +44,7 @@ col <- c(PLAYER_ID = NA_integer_,
 
 #LOADING ONLY GAME_PK DATA. THIS WILL BE RUN THROUGH A LOOP
 game_id <- read_csv(file = schedule_file) %>%
-    filter(DATE >= as_date("2016-09-01"),
+    filter(DATE >= as_date("2016-01-01"),
            DATE <= today()) %>%
     pull(GAME_PK)
 
