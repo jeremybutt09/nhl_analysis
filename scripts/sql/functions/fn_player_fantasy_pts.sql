@@ -1,4 +1,4 @@
-CREATE OR REPLACE FUNCTION fn_player_fantasy_points
+create or replace FUNCTION fn_player_fantasy_points
 (
     p_player_id  VARCHAR2,
     p_game_id    VARCHAR2
@@ -19,9 +19,9 @@ AS
     v_ga_fan_pts        NUMBER := -2;
     v_save_fan_pts      NUMBER := 0.4;
     v_shut_out_fan_pts  NUMBER := 2;
-    
+
 BEGIN
-    
+
     SELECT
         NVL(goals, 0)*v_goal_fan_pts +
         NVL(assists, 0)*v_assist_fan_pts +
@@ -34,11 +34,11 @@ BEGIN
     INTO
         v_fan_pts
     FROM
-        stats_player
+        fact_player
     WHERE
         player_id = p_player_id
         AND game_id = p_game_id;
-    
+
     RETURN v_fan_pts;
-    
+
 END;

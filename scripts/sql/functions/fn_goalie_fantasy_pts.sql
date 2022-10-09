@@ -1,4 +1,4 @@
-CREATE OR REPLACE FUNCTION fn_goalie_fantasy_points
+create or replace FUNCTION fn_goalie_fantasy_points
 (
     p_player_id  VARCHAR2,
     p_game_id    VARCHAR2
@@ -20,10 +20,10 @@ AS
     v_ga_fan_pts        NUMBER := -2;
     v_save_fan_pts      NUMBER := 0.4;
     v_shut_out_fan_pts  NUMBER := 2;
-    
+
 BEGIN
-    
-   
+
+
     SELECT
         (CASE WHEN decision = 'W' THEN 1 ELSE 0 END)*v_win_fan_pts +
         (CASE WHEN decision = 'L' THEN 1 ELSE 0 END)*v_lose_fan_pts +
@@ -33,11 +33,11 @@ BEGIN
     INTO
         v_fan_pts
     FROM
-        stats_goalie
+        fact_goalie
     WHERE
         player_id = p_player_id
         AND game_id = p_game_id;
-    
+
     RETURN v_fan_pts;
-    
+
 END;

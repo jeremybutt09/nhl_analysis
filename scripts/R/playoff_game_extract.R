@@ -2,6 +2,7 @@
 library(tidyverse)
 library(lubridate)
 library("nhlapi")
+library(magrittr)
 
 #OUTPUT FILE
 output_file <- "data/playoff_data.csv"
