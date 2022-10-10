@@ -118,6 +118,12 @@ player_game_data_extract <- function(game_id, home_away) {
 for (i in 1:length(home_away_list)) {
     for (j in 1:length(game_id)) {
     
+    append <- if (i == 1 & j == 1) {
+        FALSE
+    } else {
+        TRUE
+    }
+        
     test <- nhl_games_boxscore(game_id[j]) %>%
                 .[[1]] %>%
                 extract2("teams") %>%
@@ -136,9 +142,10 @@ for (i in 1:length(home_away_list)) {
                          y = j)
     
     write_csv(x = player_game_data,
-              file = paste(player_output_file, "_", str_sub(game_id[j], 1, 4), ".csv", sep = ""),
+              #file = paste(player_output_file, "_", str_sub(game_id[j], 1, 4), ".csv", sep = ""),
+              file = player_output_file,
               na = "",
-              append = TRUE)
+              append = append)
     
     write_csv(x = log_df,
               file = log_output_file,
