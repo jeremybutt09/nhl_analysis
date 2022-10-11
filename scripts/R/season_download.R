@@ -4,7 +4,7 @@ library(lubridate)
 library("nhlapi")
 
 #OUTPUT FILE
-output_file <- "C:/Users/Jeremy/Documents/nhl_analysis/data/schedule_data.csv"
+output_file <- "C:/Users/Jeremy/Documents/nhl_analysis/data/fact_schedule.csv"
 
 
 #CREATING A DATE SEQUENCE TO LOOP OVER
@@ -39,4 +39,5 @@ schedule_data <- bind_rows(schedule_list)
 #WRITE DATA TO A CSV
 write_csv(x = schedule_data,
           file = output_file,
-          na = "")
+          na = "",
+          append = FALSE)
