@@ -1,0 +1,1 @@
+sqlldr CONTROL=dim_teams.ctl LOG=dim_teams.log BAD=dim_teams.bad skip=1   

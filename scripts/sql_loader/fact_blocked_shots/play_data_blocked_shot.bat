@@ -1,0 +1,1 @@
+sqlldr JEREMYBUTT/system@10.0.0.69:1521/XEPDB1 CONTROL=play_data_blocked_shot.ctl LOG=C:\Users\Jeremy\Documents\nhl_analysis\scripts\sql_loader\fact_blocked_shots\play_data_blocked_shot.log BAD=C:\Users\Jeremy\Documents\nhl_analysis\scripts\sql_loader\fact_blocked_shots\play_data_blocked_shot.bad skip=1   

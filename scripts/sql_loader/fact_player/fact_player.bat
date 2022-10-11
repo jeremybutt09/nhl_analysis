@@ -1,0 +1,1 @@
+sqlldr JEREMYBUTT/system@10.0.0.69:1521/XEPDB1 CONTROL=fact_player.ctl LOG=fact_player.log BAD=fact_player.bad skip=1

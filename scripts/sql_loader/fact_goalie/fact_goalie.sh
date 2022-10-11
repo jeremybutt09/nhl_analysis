@@ -1,0 +1,1 @@
+sqlldr CONTROL=fact_goalie.ctl LOG=C:\Users\Jeremy\Documents\nhl_analysis\scripts\sql_loader\fact_goalie\fact_goalie.log BAD=C:\Users\Jeremy\Documents\nhl_analysis\scripts\sql_loader\fact_goalie\fact_goalie.bad skip=0

@@ -1,0 +1,103 @@
+
+SQL*Loader: Release 21.0.0.0.0 - Production on Tue Oct 11 14:19:06 2022
+Version 21.3.0.0.0
+
+Copyright (c) 1982, 2021, Oracle and/or its affiliates.  All rights reserved.
+
+Control File:   fact_player.ctl
+Data File:      C:\Users\Jeremy\Documents\nhl_analysis\data\fact_player.csv
+  File processing option string: "str '\n'"
+  Bad File:     C:\Users\Jeremy\Documents\nhl_analysis\scripts\sql_loader\fact_player\fact_player.bad
+  Discard File:  none specified
+ 
+ (Allow all discards)
+
+Number to load: ALL
+Number to skip: 0
+Errors allowed: 50
+Bind array:     250 rows, maximum of 1048576 bytes
+Continuation:    none specified
+Path used:      Conventional
+
+Table FACT_PLAYER, loaded from every logical record.
+Insert option in effect for this table: APPEND
+TRAILING NULLCOLS option in effect
+
+   Column Name                  Position   Len  Term Encl Datatype
+------------------------------ ---------- ----- ---- ---- ---------------------
+GAME_ID                             FIRST    10   ,  O(") CHARACTER            
+                                                      O(")
+PLAYER_ID                            NEXT     7   ,  O(") CHARACTER            
+                                                      O(")
+PLAYER_NAME                          NEXT   128   ,  O(") CHARACTER            
+                                                      O(")
+PRIMARY_POSITION_CODE                NEXT     *   ,  O(") CHARACTER            
+                                                      O(")
+    SQL string for column : "CASE WHEN :PRIMARY_POSITION_CODE = 'N/A' THEN NULL ELSE :PRIMARY_POSITION_CODE END"
+TEAM_ID                              NEXT     2   ,  O(") CHARACTER            
+                                                      O(")
+TIME_ON_ICE                          NEXT     6   ,  O(") CHARACTER            
+                                                      O(")
+ASSISTS                              NEXT     *   ,  O(") CHARACTER            
+                                                      O(")
+GOALS                                NEXT     *   ,  O(") CHARACTER            
+                                                      O(")
+SHOTS                                NEXT     *   ,  O(") CHARACTER            
+                                                      O(")
+HITS                                 NEXT     *   ,  O(") CHARACTER            
+                                                      O(")
+POWER_PLAY_GOALS                     NEXT     *   ,  O(") CHARACTER            
+                                                      O(")
+POWER_PLAY_ASSISTS                   NEXT     *   ,  O(") CHARACTER            
+                                                      O(")
+PENALTY_MINUTES                      NEXT     *   ,  O(") CHARACTER            
+                                                      O(")
+FACE_OFF_WINS                        NEXT     *   ,  O(") CHARACTER            
+                                                      O(")
+FACEOFF_TAKEN                        NEXT     *   ,  O(") CHARACTER            
+                                                      O(")
+TAKEAWAYS                            NEXT     *   ,  O(") CHARACTER            
+                                                      O(")
+GIVEAWAYS                            NEXT     *   ,  O(") CHARACTER            
+                                                      O(")
+SHORT_HANDED_GOALS                   NEXT     *   ,  O(") CHARACTER            
+                                                      O(")
+SHORT_HANDED_ASSISTS                 NEXT     *   ,  O(") CHARACTER            
+                                                      O(")
+BLOCKED                              NEXT     *   ,  O(") CHARACTER            
+                                                      O(")
+PLUS_MINUS                           NEXT     *   ,  O(") CHARACTER            
+                                                      O(")
+EVEN_TIME_ON_ICE                     NEXT     6   ,  O(") CHARACTER            
+                                                      O(")
+POWER_PLAY_TIME_ON_ICE               NEXT     6   ,  O(") CHARACTER            
+                                                      O(")
+SHORT_HANDED_TIME_ON_ICE             NEXT     6   ,  O(") CHARACTER            
+                                                      O(")
+FACE_OFF_PCT                         NEXT     *   ,  O(") CHARACTER            
+                                                      O(")
+
+value used for ROWS parameter changed from 250 to 229
+Record 1: Rejected - Error on table FACT_PLAYER, column PLAYER_ID.
+Field in data file exceeds maximum length
+
+Table FACT_PLAYER:
+  291973 Rows successfully loaded.
+  1 Row not loaded due to data errors.
+  0 Rows not loaded because all WHEN clauses were failed.
+  0 Rows not loaded because all fields were null.
+
+
+Space allocated for bind array:                1047446 bytes(229 rows)
+Read   buffer bytes: 1048576
+
+Total logical records skipped:          0
+Total logical records read:        291974
+Total logical records rejected:         1
+Total logical records discarded:        0
+
+Run began on Tue Oct 11 14:19:06 2022
+Run ended on Tue Oct 11 14:19:15 2022
+
+Elapsed time was:     00:00:09.48
+CPU time was:         00:00:01.37

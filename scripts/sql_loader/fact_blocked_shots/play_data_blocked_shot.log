@@ -1,0 +1,111 @@
+
+SQL*Loader: Release 21.0.0.0.0 - Production on Mon Oct 10 16:54:01 2022
+Version 21.3.0.0.0
+
+Copyright (c) 1982, 2021, Oracle and/or its affiliates.  All rights reserved.
+
+Control File:   play_data_blocked_shot.ctl
+Data File:      C:\Users\Jeremy\Documents\nhl_analysis\data\play_data_blocked shot.csv
+  File processing option string: "str '\n'"
+  Bad File:     C:\Users\Jeremy\Documents\nhl_analysis\scripts\sql_loader\fact_blocked_shots\play_data_blocked_shot.bad
+  Discard File:  none specified
+ 
+ (Allow all discards)
+
+Number to load: ALL
+Number to skip: 1
+Errors allowed: 50
+Bind array:     250 rows, maximum of 1048576 bytes
+Continuation:    none specified
+Path used:      Conventional
+
+Table FACT_BLOCKED_SHOT, loaded from every logical record.
+Insert option in effect for this table: APPEND
+TRAILING NULLCOLS option in effect
+
+   Column Name                  Position   Len  Term Encl Datatype
+------------------------------ ---------- ----- ---- ---- ---------------------
+RESULT_EVENT                        FIRST    12   ,  O(") CHARACTER            
+                                                      O(")
+RESULT_EVENT_CODE                    NEXT    26   ,  O(") CHARACTER            
+                                                      O(")
+RESULT_EVENT_TYPE_ID                 NEXT    12   ,  O(") CHARACTER            
+                                                      O(")
+RESULT_DESCRIPTION                   NEXT   512   ,  O(") CHARACTER            
+                                                      O(")
+RESULT_SECONDARY_TYPE                NEXT    26   ,  O(") CHARACTER            
+                                                      O(")
+RESULT_GAME_WINNING_GOAL             NEXT    26   ,  O(") CHARACTER            
+                                                      O(")
+RESULT_EMPTY_NET                     NEXT    26   ,  O(") CHARACTER            
+                                                      O(")
+RESULT_PENALTY_SEVERITY              NEXT    26   ,  O(") CHARACTER            
+                                                      O(")
+RESULT_PENALTY_MINUTES               NEXT    26   ,  O(") CHARACTER            
+                                                      O(")
+RESULT_STRENGTH_CODE                 NEXT    26   ,  O(") CHARACTER            
+                                                      O(")
+RESULT_STRENGTH_NAME                 NEXT    26   ,  O(") CHARACTER            
+                                                      O(")
+ABOUT_EVENT_IDX                      NEXT    26   ,  O(") CHARACTER            
+                                                      O(")
+ABOUT_EVENT_ID                       NEXT    26   ,  O(") CHARACTER            
+                                                      O(")
+ABOUT_PERIOD                         NEXT     1   ,  O(") CHARACTER            
+                                                      O(")
+ABOUT_PERIOD_TYPE                    NEXT    26   ,  O(") CHARACTER            
+                                                      O(")
+ABOUT_ORDINAL_NUM                    NEXT     4   ,  O(") CHARACTER            
+                                                      O(")
+ABOUT_PERIOD_TIME                    NEXT     5   ,  O(") CHARACTER            
+                                                      O(")
+ABOUT_PERIOD_TIME_REMAINING          NEXT     5   ,  O(") CHARACTER            
+                                                      O(")
+ABOUT_DATE_TIME                      NEXT    26   ,  O(") CHARACTER            
+                                                      O(")
+ABOUT_GOALS_AWAY                     NEXT     *   ,  O(") CHARACTER            
+                                                      O(")
+ABOUT_GOALS_HOME                     NEXT     *   ,  O(") CHARACTER            
+                                                      O(")
+COORDINATES_X                        NEXT     *   ,  O(") CHARACTER            
+                                                      O(")
+COORDINATES_Y                        NEXT     *   ,  O(") CHARACTER            
+                                                      O(")
+TEAM_ID                              NEXT     2   ,  O(") CHARACTER            
+                                                      O(")
+TEAM_NAME                            NEXT    56   ,  O(") CHARACTER            
+                                                      O(")
+TEAM_LINK                            NEXT    56   ,  O(") CHARACTER            
+                                                      O(")
+TEAM_TRI_CODE                        NEXT     3   ,  O(") CHARACTER            
+                                                      O(")
+BLOCKER                              NEXT     7   ,  O(") CHARACTER            
+                                                      O(")
+SHOOTER                              NEXT     7   ,  O(") CHARACTER            
+                                                      O(")
+GAME_ID                              NEXT    10   ,  O(") CHARACTER            
+                                                      O(")
+
+Record 6414: Rejected - Error on table FACT_BLOCKED_SHOT, column ABOUT_PERIOD.
+Field in data file exceeds maximum length
+
+Table FACT_BLOCKED_SHOT:
+  14218 Rows successfully loaded.
+  1 Row not loaded due to data errors.
+  0 Rows not loaded because all WHEN clauses were failed.
+  0 Rows not loaded because all fields were null.
+
+
+Space allocated for bind array:                 523500 bytes(250 rows)
+Read   buffer bytes: 1048576
+
+Total logical records skipped:          1
+Total logical records read:         14219
+Total logical records rejected:         1
+Total logical records discarded:        0
+
+Run began on Mon Oct 10 16:54:01 2022
+Run ended on Mon Oct 10 16:54:09 2022
+
+Elapsed time was:     00:00:08.06
+CPU time was:         00:00:00.17

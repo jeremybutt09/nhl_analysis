@@ -1,0 +1,1 @@
+sqlldr JEREMYBUTT/system@10.0.0.69:1521/XEPDB1 CONTROL=dim_venue.ctl LOG=dim_venue.log BAD=dim_venue.bad skip=1   

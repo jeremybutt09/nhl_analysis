@@ -1,0 +1,1 @@
+sqlldr JEREMYBUTT/system@10.0.0.69:1521/XEPDB1 CONTROL=dim_teams.ctl LOG=dim_teams.log BAD=dim_teams.bad skip=1   

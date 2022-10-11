@@ -1,0 +1,1 @@
+sqlldr JEREMYBUTT/system@10.0.0.69:1521/XEPDB1 CONTROL=fact_schedule.ctl LOG=fact_schedule.log BAD=fact_schedule.bad skip=1   

@@ -1,0 +1,1 @@
+sqlldr CONTROL=dim_season.ctl LOG=dim_season.log BAD=dim_season.bad skip=1   
