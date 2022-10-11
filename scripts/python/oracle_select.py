@@ -4,7 +4,7 @@ import pandas as pd
 def oracle_select(connection_string, sql_qry):
     """"THIS FUNCTION IS USED TO MAKE A CALL TO AN ORACLE DATABASE"""
     conStr = connection_string
-    conn = cx_Oracle.connect(conStr)
+    conn = ora.connect(conStr)
     cur = conn.cursor()
     sqlTxt = sql_qry
     cur.execute(sqlTxt)
