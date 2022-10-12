@@ -1,1 +1,0 @@
-sqlldr CONTROL=schedule_data.ctl LOG=C:\Users\Jeremy\Documents\nhl_analysis\log\schedule_data.log BAD=C:\Users\Jeremy\Documents\nhl_analysis\bad\schedule_data.bad skip=1   
