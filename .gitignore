@@ -2,8 +2,8 @@
 .Rhistory
 .RData
 .Ruserdata
-*.log
-*.bad
+.log
+.bad
 .bak
 log/*
 Tableau/*
