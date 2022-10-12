@@ -1,1 +1,0 @@
-sqlldr CONTROL=play_data_blocked shot.ctl LOG=C:\Users\Jeremy\Documents\nhl_analysis\scripts\sql_loader\fact_blocked_shots\play_data_blocked shot.log BAD=C:\Users\Jeremy\Documents\nhl_analysis\scripts\sql_loader\fact_blocked_shots\play_data_blocked shot.bad skip=1   

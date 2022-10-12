@@ -1,1 +1,0 @@
-sqlldr CONTROL=dim_player.ctl LOG=dim_player.log BAD=dim_player.bad skip=1   

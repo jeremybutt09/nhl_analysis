@@ -1,1 +1,0 @@
-sqlldr CONTROL=metadata_game_types.ctl LOG=C:\Users\Jeremy\Documents\nhl_analysis\scripts\sql_loader\dim_game_types\metadata_game_types.log BAD=C:\Users\Jeremy\Documents\nhl_analysis\scripts\sql_loader\dim_game_types\metadata_game_types.bad skip=1   

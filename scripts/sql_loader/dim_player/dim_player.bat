@@ -1,1 +1,0 @@
-sqlldr JEREMYBUTT/system@10.0.0.69:1521/XEPDB1 CONTROL=dim_player.ctl LOG=dim_player.log BAD=dim_player.bad skip=1   

@@ -1,1 +1,0 @@
-sqlldr CONTROL=dim_venue.ctl LOG=dim_venue.log BAD=dim_venue.bad skip=1   

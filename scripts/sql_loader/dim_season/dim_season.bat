@@ -1,1 +1,0 @@
-sqlldr JEREMYBUTT/system@10.0.0.69:1521/XEPDB1 CONTROL=dim_season.ctl LOG=dim_season.log BAD=dim_season.bad skip=1   
