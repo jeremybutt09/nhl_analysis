@@ -1,13 +1,13 @@
 
-SQL*Loader: Release 21.0.0.0.0 - Production on Tue Oct 11 17:44:07 2022
+SQL*Loader: Release 21.0.0.0.0 - Production on Tue Oct 11 21:23:49 2022
 Version 21.3.0.0.0
 
 Copyright (c) 1982, 2021, Oracle and/or its affiliates.  All rights reserved.
 
-Control File:   dim_venue.ctl
+Control File:   C:\Users\Jeremy\Documents\nhl_analysis\scripts\sql_loader\dim_venue\dim_venue.ctl
 Data File:      C:\Users\Jeremy\Documents\nhl_analysis\data\dim_venue.csv
   File processing option string: "str '\n'"
-  Bad File:     dim_venue.bad
+  Bad File:     C:\Users\Jeremy\Documents\nhl_analysis\scripts\sql_loader\dim_venue\dim_venue.bad
   Discard File:  none specified
  
  (Allow all discards)
@@ -38,61 +38,10 @@ URL                                  NEXT   128   ,  O(") CHARACTER
 COPYRIGHT                            NEXT   256   ,  O(") CHARACTER            
                                                       O(")
 
-Record 1: Rejected - Error on table DIM_VENUE.
-ORA-00001: unique constraint (JEREMYBUTT.VENUE_PK) violated
-
-Record 2: Rejected - Error on table DIM_VENUE.
-ORA-00001: unique constraint (JEREMYBUTT.VENUE_PK) violated
-
-Record 3: Rejected - Error on table DIM_VENUE.
-ORA-00001: unique constraint (JEREMYBUTT.VENUE_PK) violated
-
-Record 4: Rejected - Error on table DIM_VENUE.
-ORA-00001: unique constraint (JEREMYBUTT.VENUE_PK) violated
-
-Record 5: Rejected - Error on table DIM_VENUE.
-ORA-00001: unique constraint (JEREMYBUTT.VENUE_PK) violated
-
-Record 6: Rejected - Error on table DIM_VENUE.
-ORA-00001: unique constraint (JEREMYBUTT.VENUE_PK) violated
-
-Record 7: Rejected - Error on table DIM_VENUE.
-ORA-00001: unique constraint (JEREMYBUTT.VENUE_PK) violated
-
-Record 8: Rejected - Error on table DIM_VENUE.
-ORA-00001: unique constraint (JEREMYBUTT.VENUE_PK) violated
-
-Record 9: Rejected - Error on table DIM_VENUE.
-ORA-00001: unique constraint (JEREMYBUTT.VENUE_PK) violated
-
-Record 10: Rejected - Error on table DIM_VENUE.
-ORA-00001: unique constraint (JEREMYBUTT.VENUE_PK) violated
-
-Record 11: Rejected - Error on table DIM_VENUE.
-ORA-00001: unique constraint (JEREMYBUTT.VENUE_PK) violated
-
-Record 12: Rejected - Error on table DIM_VENUE.
-ORA-00001: unique constraint (JEREMYBUTT.VENUE_PK) violated
-
-Record 13: Rejected - Error on table DIM_VENUE.
-ORA-00001: unique constraint (JEREMYBUTT.VENUE_PK) violated
-
-Record 14: Rejected - Error on table DIM_VENUE.
-ORA-00001: unique constraint (JEREMYBUTT.VENUE_PK) violated
-
-Record 15: Rejected - Error on table DIM_VENUE.
-ORA-00001: unique constraint (JEREMYBUTT.VENUE_PK) violated
-
-Record 16: Rejected - Error on table DIM_VENUE.
-ORA-00001: unique constraint (JEREMYBUTT.VENUE_PK) violated
-
-Record 17: Rejected - Error on table DIM_VENUE.
-ORA-00001: unique constraint (JEREMYBUTT.VENUE_PK) violated
-
 
 Table DIM_VENUE:
-  0 Rows successfully loaded.
-  17 Rows not loaded due to data errors.
+  17 Rows successfully loaded.
+  0 Rows not loaded due to data errors.
   0 Rows not loaded because all WHEN clauses were failed.
   0 Rows not loaded because all fields were null.
 
@@ -102,11 +51,11 @@ Read   buffer bytes: 1048576
 
 Total logical records skipped:          1
 Total logical records read:            17
-Total logical records rejected:        17
+Total logical records rejected:         0
 Total logical records discarded:        0
 
-Run began on Tue Oct 11 17:44:07 2022
-Run ended on Tue Oct 11 17:44:08 2022
+Run began on Tue Oct 11 21:23:49 2022
+Run ended on Tue Oct 11 21:23:49 2022
 
-Elapsed time was:     00:00:00.72
-CPU time was:         00:00:00.09
+Elapsed time was:     00:00:00.11
+CPU time was:         00:00:00.08

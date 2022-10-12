@@ -1,51 +1,19 @@
 
-SQL*Loader: Release 21.0.0.0.0 - Production on Thu Oct 6 21:35:09 2022
+SQL*Loader: Release 21.0.0.0.0 - Production on Tue Oct 11 21:23:49 2022
 Version 21.3.0.0.0
 
 Copyright (c) 1982, 2021, Oracle and/or its affiliates.  All rights reserved.
 
-Control File:   fact_goalie.ctl
-
-There are 6 data files:
-Data File:      C:\Users\Jeremy\Documents\nhl_analysis\data\goalie_game_data_2016.csv
+Control File:   C:\Users\Jeremy\Documents\nhl_analysis\scripts\sql_loader\fact_goalie\fact_goalie.ctl
+Data File:      C:\Users\Jeremy\Documents\nhl_analysis\data\fact_goalie.csv
   File processing option string: "str '\n'"
   Bad File:     C:\Users\Jeremy\Documents\nhl_analysis\scripts\sql_loader\fact_goalie\fact_goalie.bad
   Discard File:  none specified
  
  (Allow all discards)
-Data File:      C:\Users\Jeremy\Documents\nhl_analysis\data\goalie_game_data_2017.csv
-  File processing option string: "str '\n'"
-  Bad File:     goalie_game_data_2017.bad
-  Discard File:  none specified
- 
- (Allow all discards)
-Data File:      C:\Users\Jeremy\Documents\nhl_analysis\data\goalie_game_data_2018.csv
-  File processing option string: "str '\n'"
-  Bad File:     goalie_game_data_2018.bad
-  Discard File:  none specified
- 
- (Allow all discards)
-Data File:      C:\Users\Jeremy\Documents\nhl_analysis\data\goalie_game_data_2019.csv
-  File processing option string: "str '\n'"
-  Bad File:     goalie_game_data_2019.bad
-  Discard File:  none specified
- 
- (Allow all discards)
-Data File:      C:\Users\Jeremy\Documents\nhl_analysis\data\goalie_game_data_2020.csv
-  File processing option string: "str '\n'"
-  Bad File:     goalie_game_data_2020.bad
-  Discard File:  none specified
- 
- (Allow all discards)
-Data File:      C:\Users\Jeremy\Documents\nhl_analysis\data\goalie_game_data_2021.csv
-  File processing option string: "str '\n'"
-  Bad File:     goalie_game_data_2021.bad
-  Discard File:  none specified
- 
- (Allow all discards)
 
 Number to load: ALL
-Number to skip: 0
+Number to skip: 1
 Errors allowed: 50
 Bind array:     250 rows, maximum of 1048576 bytes
 Continuation:    none specified
@@ -111,13 +79,13 @@ Table FACT_GOALIE:
 Space allocated for bind array:                 887500 bytes(250 rows)
 Read   buffer bytes: 1048576
 
-Total logical records skipped:          0
+Total logical records skipped:          1
 Total logical records read:         18404
 Total logical records rejected:         0
 Total logical records discarded:        0
 
-Run began on Thu Oct 06 21:35:09 2022
-Run ended on Thu Oct 06 21:35:10 2022
+Run began on Tue Oct 11 21:23:49 2022
+Run ended on Tue Oct 11 21:23:50 2022
 
-Elapsed time was:     00:00:01.59
+Elapsed time was:     00:00:00.50
 CPU time was:         00:00:00.19

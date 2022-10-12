@@ -1,13 +1,13 @@
 
-SQL*Loader: Release 21.0.0.0.0 - Production on Thu Oct 6 21:33:41 2022
+SQL*Loader: Release 21.0.0.0.0 - Production on Tue Oct 11 21:23:47 2022
 Version 21.3.0.0.0
 
 Copyright (c) 1982, 2021, Oracle and/or its affiliates.  All rights reserved.
 
-Control File:   metadata_game_types.ctl
-Data File:      C:\Users\Jeremy\Documents\nhl_analysis\data\metadata_game_types.csv
+Control File:   C:\Users\Jeremy\Documents\nhl_analysis\scripts\sql_loader\dim_game_types\dim_game_type.ctl
+Data File:      C:\Users\Jeremy\Documents\nhl_analysis\data\dim_game_type.csv
   File processing option string: "str '\r\n'"
-  Bad File:     C:\Users\Jeremy\Documents\nhl_analysis\scripts\sql_loader\dim_game_types\metadata_game_types.bad
+  Bad File:     C:\Users\Jeremy\Documents\nhl_analysis\scripts\sql_loader\dim_game_types\dim_game_type.bad
   Discard File:  none specified
  
  (Allow all discards)
@@ -48,8 +48,8 @@ Total logical records read:             9
 Total logical records rejected:         0
 Total logical records discarded:        0
 
-Run began on Thu Oct 06 21:33:41 2022
-Run ended on Thu Oct 06 21:33:45 2022
+Run began on Tue Oct 11 21:23:47 2022
+Run ended on Tue Oct 11 21:23:48 2022
 
-Elapsed time was:     00:00:03.56
-CPU time was:         00:00:00.07
+Elapsed time was:     00:00:00.66
+CPU time was:         00:00:00.08

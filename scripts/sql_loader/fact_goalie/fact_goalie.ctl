@@ -1,10 +1,5 @@
 load data 
-infile 'C:\Users\Jeremy\Documents\nhl_analysis\data\goalie_game_data_2016.csv' "str '\n'"
-infile 'C:\Users\Jeremy\Documents\nhl_analysis\data\goalie_game_data_2017.csv' "str '\n'"
-infile 'C:\Users\Jeremy\Documents\nhl_analysis\data\goalie_game_data_2018.csv' "str '\n'"
-infile 'C:\Users\Jeremy\Documents\nhl_analysis\data\goalie_game_data_2019.csv' "str '\n'"
-infile 'C:\Users\Jeremy\Documents\nhl_analysis\data\goalie_game_data_2020.csv' "str '\n'"
-infile 'C:\Users\Jeremy\Documents\nhl_analysis\data\goalie_game_data_2021.csv' "str '\n'"
+infile 'C:\Users\Jeremy\Documents\nhl_analysis\data\fact_goalie.csv' "str '\n'"
 append
 into table FACT_GOALIE
 fields terminated by ','

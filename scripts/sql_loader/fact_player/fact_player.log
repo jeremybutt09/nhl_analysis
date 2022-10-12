@@ -1,10 +1,10 @@
 
-SQL*Loader: Release 21.0.0.0.0 - Production on Tue Oct 11 14:19:06 2022
+SQL*Loader: Release 21.0.0.0.0 - Production on Tue Oct 11 21:23:50 2022
 Version 21.3.0.0.0
 
 Copyright (c) 1982, 2021, Oracle and/or its affiliates.  All rights reserved.
 
-Control File:   fact_player.ctl
+Control File:   C:\Users\Jeremy\Documents\nhl_analysis\scripts\sql_loader\fact_player\fact_player.ctl
 Data File:      C:\Users\Jeremy\Documents\nhl_analysis\data\fact_player.csv
   File processing option string: "str '\n'"
   Bad File:     C:\Users\Jeremy\Documents\nhl_analysis\scripts\sql_loader\fact_player\fact_player.bad
@@ -13,7 +13,7 @@ Data File:      C:\Users\Jeremy\Documents\nhl_analysis\data\fact_player.csv
  (Allow all discards)
 
 Number to load: ALL
-Number to skip: 0
+Number to skip: 1
 Errors allowed: 50
 Bind array:     250 rows, maximum of 1048576 bytes
 Continuation:    none specified
@@ -78,12 +78,10 @@ FACE_OFF_PCT                         NEXT     *   ,  O(") CHARACTER
                                                       O(")
 
 value used for ROWS parameter changed from 250 to 229
-Record 1: Rejected - Error on table FACT_PLAYER, column PLAYER_ID.
-Field in data file exceeds maximum length
 
 Table FACT_PLAYER:
   291973 Rows successfully loaded.
-  1 Row not loaded due to data errors.
+  0 Rows not loaded due to data errors.
   0 Rows not loaded because all WHEN clauses were failed.
   0 Rows not loaded because all fields were null.
 
@@ -91,13 +89,13 @@ Table FACT_PLAYER:
 Space allocated for bind array:                1047446 bytes(229 rows)
 Read   buffer bytes: 1048576
 
-Total logical records skipped:          0
-Total logical records read:        291974
-Total logical records rejected:         1
+Total logical records skipped:          1
+Total logical records read:        291973
+Total logical records rejected:         0
 Total logical records discarded:        0
 
-Run began on Tue Oct 11 14:19:06 2022
-Run ended on Tue Oct 11 14:19:15 2022
+Run began on Tue Oct 11 21:23:50 2022
+Run ended on Tue Oct 11 21:23:55 2022
 
-Elapsed time was:     00:00:09.48
-CPU time was:         00:00:01.37
+Elapsed time was:     00:00:05.76
+CPU time was:         00:00:01.28

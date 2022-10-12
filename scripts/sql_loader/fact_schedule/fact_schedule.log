@@ -1,10 +1,10 @@
 
-SQL*Loader: Release 21.0.0.0.0 - Production on Tue Oct 11 16:18:57 2022
+SQL*Loader: Release 21.0.0.0.0 - Production on Tue Oct 11 21:23:55 2022
 Version 21.3.0.0.0
 
 Copyright (c) 1982, 2021, Oracle and/or its affiliates.  All rights reserved.
 
-Control File:   fact_schedule.ctl
+Control File:   C:\Users\Jeremy\Documents\nhl_analysis\scripts\sql_loader\fact_schedule\fact_schedule.ctl
 Data File:      C:\Users\Jeremy\Documents\nhl_analysis\data\fact_schedule.csv
   File processing option string: "str '\n'"
   Bad File:     C:\Users\Jeremy\Documents\nhl_analysis\scripts\sql_loader\fact_schedule\fact_schedule.bad
@@ -113,8 +113,8 @@ Total logical records read:          9575
 Total logical records rejected:         0
 Total logical records discarded:        0
 
-Run began on Tue Oct 11 16:18:57 2022
-Run ended on Tue Oct 11 16:18:59 2022
+Run began on Tue Oct 11 21:23:55 2022
+Run ended on Tue Oct 11 21:23:56 2022
 
-Elapsed time was:     00:00:02.56
-CPU time was:         00:00:00.14
+Elapsed time was:     00:00:00.57
+CPU time was:         00:00:00.08
