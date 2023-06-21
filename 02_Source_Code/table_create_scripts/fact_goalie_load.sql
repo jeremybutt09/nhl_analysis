@@ -1,0 +1,25 @@
+CREATE TABLE "JEREMYBUTT"."FACT_GOALIE_LOAD" 
+   (	
+    "GAME_ID"                       VARCHAR2(10 BYTE) NOT NULL ENABLE, 
+	"PLAYER_ID"                     VARCHAR2(7 BYTE) NOT NULL ENABLE, 
+	"PLAYER_NAME"                   VARCHAR2(128 BYTE), 
+	"PRIMARY_POSITION_CODE"         VARCHAR2(1 BYTE), 
+	"TEAM_ID"                       VARCHAR2(2 BYTE), 
+	"TIME_ON_ICE"                   VARCHAR2(6 BYTE), 
+	"ASSISTS"                       NUMBER(2,0), 
+	"GOALS"                         NUMBER(2,0), 
+	"PENALTY_MINUTES"               NUMBER(3,0), 
+	"SHOTS"                         NUMBER(2,0), 
+	"SAVES"                         NUMBER(3,0), 
+	"POWER_PLAY_SAVES"              NUMBER(3,0), 
+	"SHORT_HANDED_SAVES"            NUMBER(3,0), 
+	"EVEN_SAVES"                    NUMBER(3,0), 
+	"SHORT_HANDED_SHOTS_AGAINST"    NUMBER(3,0), 
+	"EVEN_SHOTS_AGAINST"            NUMBER(3,0), 
+	"POWER_PLAY_SHOTS_AGAINST"      NUMBER(3,0), 
+	"DECISION"                      VARCHAR2(5 BYTE), 
+	"SAVE_PERCENTAGE"               NUMBER(5,2), 
+	"EVEN_STRENGTH_SAVE_PERCENTAGE" NUMBER(5,2), 
+	"LOAD_DATE"                     DATE, 
+	 CONSTRAINT "FACT_GOALIE_LOAD_PK" PRIMARY KEY ("GAME_ID", "PLAYER_ID")
+    )
